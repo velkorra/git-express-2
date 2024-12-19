@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = 'your-secret-key';
-const HARDCODED_TOKEN = 'your-hardcoded-token';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -11,7 +11,7 @@ function authenticateToken(req, res, next) {
     return res.status(401).json({ message: 'Нет токена. Доступ запрещен!' });
   }
 
-  if (token !== HARDCODED_TOKEN) {
+  if (token !== JWT_SECRET) {
     return res.status(403).json({ message: 'Неверный токен. Доступ запрещен!' });
   }
 
