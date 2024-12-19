@@ -4,3 +4,9 @@ class Config {
   }
 }
 
+class Config2 {
+  constructor() {
+    this.PORT = process.env.PORT;
+  }
+}
+
